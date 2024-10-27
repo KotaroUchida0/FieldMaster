@@ -26,11 +26,11 @@ class CustomUser(AbstractUser):
 
     email = models.EmailField(unique=True, verbose_name='メールアドレス')
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']  # 必要なら追加。例: ['username']
+    REQUIRED_FIELDS = ['username']  # 必要なら追加。例: ['username']
     team = models.ForeignKey(Team, on_delete=models.CASCADE, verbose_name='所属チーム', related_name='members')
-    position = models.CharField(max_length=50, choices=POSITION_CHOICES,  default='Unknown',verbose_name='ポジション')
+    position = models.CharField(max_length=50, choices=POSITION_CHOICES, verbose_name='ポジション')
     role = models.CharField(max_length=50, blank=True, null=True, verbose_name='役割')
-    bat_throw = models.CharField(max_length=2, choices=BAT_THROW_CHOICES, default='RR', verbose_name='投打')
+    bat_throw = models.CharField(max_length=2, choices=BAT_THROW_CHOICES,  verbose_name='投打')
     jersey_number = models.IntegerField(blank=True, null=True, verbose_name='背番号')
 
     class Meta:
