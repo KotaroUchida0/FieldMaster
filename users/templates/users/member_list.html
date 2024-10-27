@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}メンバー一覧{% endblock %}
+
+{% block content %}
+<h1>{{ request.user.team.team_name }} のメンバー一覧</h1>
+<ul>
+    {% for member in members %}
+        <li>
+            <a href="{% url 'member_detail' member.id %}">{{ member.username}}</a> - {{ member.get_position_display }} ({{ member.role }})
+            <br>投打: {{ member.get_bat_throw_display }}
+            <br>背番号: {{ member.jersey_number }}
+        </li>  
+    {% empty %}
+        <p>現在、このチームにはメンバーが登録されていません。</p>
+    {% endfor %}
+</ul>
+{% endblock %}
+

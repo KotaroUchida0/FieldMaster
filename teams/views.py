@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from .models import Team
@@ -15,6 +15,8 @@ def team_dashboard(request):
     user_team = request.user.team
     return render(request, 'teams/dashboard.html', {'team': user_team})
 
+
+# チーム登録(メンバーを1人登録しないといけない)
 def create_team_and_user(request):
     if request.method == 'POST':
         form = TeamAndUserCreationForm(request.POST)

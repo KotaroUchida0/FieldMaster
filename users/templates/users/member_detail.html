@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ member.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ member.name }}</h1>
+<p>ポジション: {{ member.get_position_display }}</p>
+<p>役割: {{ member.role }}</p>
+<p>投打: {{ member.get_bat_throw_display }}</p>
+
+
+
+<a href="{% url 'member_list' %}">メンバーリストに戻る</a>
+{% endblock %}

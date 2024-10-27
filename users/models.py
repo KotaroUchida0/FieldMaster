@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from teams.models import Team  # チームモデルのインポート
-# Create your models here.
+
 
 class CustomUser(AbstractUser):
     # 不要なフィールドを削除
     first_name = None
     last_name = None
     is_staff = None
+
+
+    username = models.CharField(max_length=150, verbose_name='ユーザー名', blank=True, null=True)
 
     # 必要なフィールドを追加
     POSITION_CHOICES = [
@@ -37,4 +40,4 @@ class CustomUser(AbstractUser):
         db_table = 'users'
 
     def __str__(self):
-        return self.username
+        return self.username or self.email
