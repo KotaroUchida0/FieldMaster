@@ -1,0 +1,29 @@
+# MacOSファイル
+.DS_Store
+
+# Python関連
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyd
+
+# 仮想環境
+fieldmaster_venv/
+venv/
+
+# エディタ設定
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OSやシステム関連
+Library/
+Documents/
+Downloads/
+Desktop/
+Movies/
+Music/
+Pictures/
+Public/

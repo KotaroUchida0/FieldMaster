@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}チームダッシュボード{% endblock %}
+
+{% block content %}
+<h1>{{ team.team_name }} のダッシュボード</h1>
+<p>チーム作成日: {{ team.joined_datetime }}</p>
+<p>最終更新日: {{ team.updated_datetime }}</p>
+{% endblock %}
