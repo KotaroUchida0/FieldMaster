@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}イベント詳細{% endblock %}
+
+{% block content %}
+<h1>{{ event.title }}</h1>
+<p>イベントタイプ: {{ event.get_event_type_display }}</p>
+<p>日付: {{ event.date }}</p>
+<p>時間: {{ event.time }}</p>
+<p>場所: {{ event.location }}</p>
+<p>詳細: {{ event.detail }}</p>
+
+<!-- 出席状況の集計 -->
+<h2>参加状況</h2>
+<p>参加者: {{ attendance_summary.present }}人</p>
+<p>欠席者: {{ attendance_summary.absent }}人</p>
+<p>未定: {{ attendance_summary.undecided }}人</p>
+
+<!-- 個別の出欠状況 -->
+<table>
+    <thead>
+        <tr>
+            <th>ユーザー名</th>
+            <th>ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attendance in attendance_list %}
+        <tr>
+            <td>{{ attendance.user_id.username }}</td>
+            <td>{{ attendance.get_status_display }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">参加者がいません</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'check_attendance' event_id=event.id %}">出欠確認</a>
+<a href="{% url 'events' %}">イベント一覧に戻る</a>
+<a href="{% url 'edit_event' event_id=event.id %}">編集する</a>
+<a href="{% url 'delete_event' event_id=event.id %}">このイベントを削除</a>
+{% endblock %}

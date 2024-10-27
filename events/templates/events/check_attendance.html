@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}出欠確認{% endblock %}
+
+{% block content %}
+<h1>{{ event.title }} - 出欠確認</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">保存</button>
+    <a href="{% url 'event_detail' event_id=event.id %}">キャンセル</a>
+</form>
+{% endblock %}

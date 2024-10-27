@@ -1,5 +1,5 @@
 from django import forms
-from .models import Event
+from .models import Event, Attendance
 
 class EventForm(forms.ModelForm):
     date = forms.DateField(
@@ -14,3 +14,11 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['event_type', 'title', 'date', 'time', 'location', 'detail']
+
+class AttendanceForm(forms.ModelForm):
+    class Meta:
+        model = Attendance
+        fields = ['status']
+        labels = {
+            'status': '出欠ステータス',
+        }
