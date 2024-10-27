@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}スケジュール一覧{% endblock %}
+
+{% block content %}
+<h2>スケジュール一覧</h2>
+<ul>
+    {% for event in events %}
+        <li>
+            <strong>{{ event.title }}</strong><br>
+            日付: {{ event.date }}<br>
+            時間: {{ event.time }}<br>
+            場所: {{ event.location }}<br>
+            詳細: {{ event.detail }}
+        </li>
+    {% empty %}
+        <p>現在、チームのイベントはありません。</p>
+    {% endfor %}
+</ul>
+{% endblock %}
