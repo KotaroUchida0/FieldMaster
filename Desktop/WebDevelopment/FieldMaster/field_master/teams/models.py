@@ -13,3 +13,4 @@ class Team(models.Model):
     
     class Meta:
         db_table = 'teams'
+
