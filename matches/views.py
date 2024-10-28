@@ -7,12 +7,12 @@ from .forms import MatchForm
 
 @login_required
 def match_detail(request, match_id):
-    match = get_object_or_404(Match, id=match_id)
+    match = get_object_or_404(Match, id=match_id, team_id=request.user.team)
     return render(request, 'matches/match_detail.html', {'match': match})
 
 @login_required
 def update_match(request, match_id):
-    match = get_object_or_404(Match, id=match_id)
+    match = get_object_or_404(Match, id=match_id, team_id=request.user.team)
     if request.method == "POST":
         form = MatchForm(request.POST, instance=match)
         if form.is_valid():
