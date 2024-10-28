@@ -21,7 +21,7 @@ class Event(models.Model):
         verbose_name='チーム',
         db_column='team_id',
         related_name='events',
-        null=True,  # リレーションを定義
+        null=True,
     )
 
     def __str__(self):
@@ -42,14 +42,14 @@ class Attendance(models.Model):
         on_delete=models.CASCADE,
         verbose_name='ユーザー',
         db_column='user_id',
-        related_name='attendances'  # リレーションを定義
+        related_name='attendances'
     )
     event_id = models.ForeignKey(
         'Event',
         on_delete=models.CASCADE,
         verbose_name='イベント',
         db_column='event_id',
-        related_name='attendances'  # リレーションを定義
+        related_name='attendances'
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, verbose_name='ステータス')
 
@@ -58,4 +58,4 @@ class Attendance(models.Model):
 
     class Meta:
         db_table = 'attendance'
-        unique_together = ('user_id', 'event_id')  # ユーザーとイベントの組み合わせが重複しないように設定
+        unique_together = ('user_id', 'event_id')  

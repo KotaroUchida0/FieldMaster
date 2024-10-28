@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>試合一覧</h2>
+<ul>
+    {% for match in matches %}
+        <li>
+            <strong><a href="{% url 'match_detail' match.id %}">vs {{ match.event.title }}</a></strong><br>
+            日付: {{ match.event.date }}<br>
+            スコア: {{ match.score_team }} - {{ match.score_opponent }}<br>
+            結果: {{ match.get_result_display }}
+        </li>
+    {% empty %}
+        <p>現在、試合の記録はありません。</p>
+    {% endfor %}
+</ul>
+{% endblock %}

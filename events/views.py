@@ -28,7 +28,6 @@ def create_event(request):
         form = EventForm(request.POST)
         if form.is_valid():
             event = form.save(commit=False)
-            # ログインユーザーのチームを設定
             event.team_id = request.user.team  # Teamインスタンスを割り当て
             event.save()
             return redirect(reverse('events'))  # イベント一覧ページにリダイレクト
@@ -67,7 +66,7 @@ def delete_event(request, event_id):
     
     if request.method == "POST":
         event.delete()  # イベントを削除
-        return redirect('event_list')  # 削除後にイベント一覧ページにリダイレクト
+        return redirect(reverse('events'))  # 削除後にイベント一覧ページにリダイレクト
 
     return render(request, 'events/delete_event.html', {'event': event})
 

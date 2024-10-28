@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>試合結果更新  vs {{ match.event.title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">更新</button>
+    <a href="{% url 'match_detail' match.id %}">キャンセル</a>
+</form>
+{% endblock %}

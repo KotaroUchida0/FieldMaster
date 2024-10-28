@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>vs {{ match.event.title }}</h2>
+<p>試合日時: {{ match.event.date }}</p>
+<p>場所: {{ match.event.location }}</p>
+<p>スコア: {{ match.score_team }} - {{ match.score_opponent }}</p>
+<p>結果: {{ match.get_result_display }}</p>
+<p>内容: {{ match.description }}</p>
+<a href="{% url 'update_match' match.id %}">試合結果を更新</a>
+<a href="{% url 'match_list' %}">試合一覧に戻る</a
+{% endblock %}
