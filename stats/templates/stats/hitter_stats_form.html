@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}野手成績入力{% endblock %}
+
+{% block content %}
+  <h2>野手成績入力</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    <table>
+      <thead>
+        <tr>
+          <th>選手</th>
+          <th>ポジション</th>
+          <th>打順</th>
+          <th>打席数</th>
+          <th>打数</th>
+          <th>ヒット</th>
+          <th>二塁打</th>
+          <th>三塁打</th>
+          <th>本塁打</th>
+          <th>打点</th>
+          <th>得点</th>
+          <th>三振</th>
+          <th>四球</th>
+          <th>死球</th>
+          <th>犠打</th>
+          <th>犠飛</th>
+          <th>盗塁</th>
+          <th>盗塁死</th>
+          <th>併殺打</th>
+          <th>失策</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in formset %}
+          <tr>
+            <td>{{ form.player }}</td>
+            <td>{{ form.position }}</td>
+            <td>{{ form.order }}</td>
+            <td>{{ form.plate_appearances }}</td>
+            <td>{{ form.at_bats }}</td>
+            <td>{{ form.hits }}</td>
+            <td>{{ form.doubles }}</td>
+            <td>{{ form.triples }}</td>
+            <td>{{ form.home_runs }}</td>
+            <td>{{ form.rbi }}</td>
+            <td>{{ form.runs }}</td>
+            <td>{{ form.strikeouts }}</td>
+            <td>{{ form.walks }}</td>
+            <td>{{ form.hbp }}</td>
+            <td>{{ form.sac_bunt }}</td>
+            <td>{{ form.sac_fly }}</td>
+            <td>{{ form.steals }}</td>
+            <td>{{ form.caught_stealing }}</td>
+            <td>{{ form.gdp }}</td>
+            <td>{{ form.errors }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit">成績を保存</button>
+  </form>
+{% endblock %}
