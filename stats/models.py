@@ -40,7 +40,7 @@ class HitterStat(models.Model):
     errors = models.IntegerField(verbose_name="失策", default=0)
 
     def __str__(self):
-        return f"{self.player.name} - {self.game.date}"
+        return f"{self.player.name} - {self.match.date}"
 
     class Meta:
         db_table = 'hitter_stats'
@@ -48,31 +48,31 @@ class HitterStat(models.Model):
 
 class PitcherStat(models.Model):
     player = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name="選手")
-    game = models.ForeignKey(Match, on_delete=models.CASCADE, verbose_name="試合")
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, verbose_name="試合")
     team = models.ForeignKey(Team, on_delete=models.CASCADE, verbose_name="チーム")
     innings_pitched = models.FloatField(verbose_name="投球回")
-    plate_appearances = models.IntegerField(verbose_name="打席数")
-    at_bats = models.IntegerField(verbose_name="打数")
-    hits_allowed = models.IntegerField(verbose_name="被安打")
-    doubles_allowed = models.IntegerField(verbose_name="被二塁打")
-    triples_allowed = models.IntegerField(verbose_name="被三塁打")
-    home_runs_allowed = models.IntegerField(verbose_name="被本塁打")
-    strikeouts = models.IntegerField(verbose_name="三振")
-    walks = models.IntegerField(verbose_name="四球")
-    hbp = models.IntegerField(verbose_name="死球")
-    runs_allowed = models.IntegerField(verbose_name="失点")
-    earned_runs = models.IntegerField(verbose_name="自責点")
-    wild_pitches = models.IntegerField(verbose_name="暴投")
+    plate_appearances = models.IntegerField(verbose_name="打席数", default=0)
+    at_bats = models.IntegerField(verbose_name="打数", default=0)
+    hits_allowed = models.IntegerField(verbose_name="被安打", default=0)
+    doubles_allowed = models.IntegerField(verbose_name="被二塁打", default=0)
+    triples_allowed = models.IntegerField(verbose_name="被三塁打", default=0)
+    home_runs_allowed = models.IntegerField(verbose_name="被本塁打", default=0)
+    strikeouts = models.IntegerField(verbose_name="三振", default=0)
+    walks = models.IntegerField(verbose_name="四球", default=0)
+    hbp = models.IntegerField(verbose_name="死球", default=0)
+    runs_allowed = models.IntegerField(verbose_name="失点", default=0)
+    earned_runs = models.IntegerField(verbose_name="自責点", default=0)
+    wild_pitches = models.IntegerField(verbose_name="暴投", default=0)
     starter = models.BooleanField(default=False, verbose_name="先発")
     complete_game = models.BooleanField(default=False, verbose_name="完投")
     shutout = models.BooleanField(default=False, verbose_name="完封")
-    wins = models.IntegerField(verbose_name="勝利")
-    losses = models.IntegerField(verbose_name="敗戦")
-    saves = models.IntegerField(verbose_name="セーブ")
-    balks = models.IntegerField(verbose_name="ボーク")
+    wins = models.IntegerField(verbose_name="勝利", default=0)
+    losses = models.IntegerField(verbose_name="敗戦", default=0)
+    saves = models.IntegerField(verbose_name="セーブ", default=0)
+    balks = models.IntegerField(verbose_name="ボーク", default=0)
 
     def __str__(self):
-        return f"{self.player.name} - {self.game.date}"
+        return f"{self.player.name} - {self.match.date}"
 
     class Meta:
         db_table = 'pitcher_stats'
