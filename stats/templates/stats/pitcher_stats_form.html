@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}投手成績入力{% endblock %}
+
+{% block content %}
+  <h2>投手成績入力</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    <table>
+      <thead>
+        <tr>
+          <th>選手</th>
+          <th>投球回</th>
+          <th>打席数</th>
+          <th>打数</th>
+          <th>被安打</th>
+          <th>被二塁打</th>
+          <th>被三塁打</th>
+          <th>被本塁打</th>
+          <th>三振</th>
+          <th>四球</th>
+          <th>死球</th>
+          <th>失点</th>
+          <th>自責点</th>
+          <th>暴投</th>
+          <th>先発</th>
+          <th>完投</th>
+          <th>完封</th>
+          <th>勝利</th>
+          <th>敗戦</th>
+          <th>セーブ</th>
+          <th>ボーク</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in formset %}
+          <tr>
+            <td>{{ form.player }}</td>
+            <td>{{ form.innings_pitched }}</td>
+            <td>{{ form.plate_appearances }}</td>
+            <td>{{ form.at_bats }}</td>
+            <td>{{ form.hits_allowed }}</td>
+            <td>{{ form.doubles_allowed }}</td>
+            <td>{{ form.triples_allowed }}</td>
+            <td>{{ form.home_runs_allowed }}</td>
+            <td>{{ form.strikeouts }}</td>
+            <td>{{ form.walks }}</td>
+            <td>{{ form.hbp }}</td>
+            <td>{{ form.runs_allowed }}</td>
+            <td>{{ form.earned_runs }}</td>
+            <td>{{ form.wild_pitches }}</td>
+            <td>{{ form.starter }}</td>
+            <td>{{ form.complete_game }}</td>
+            <td>{{ form.shutout }}</td>
+            <td>{{ form.wins }}</td>
+            <td>{{ form.losses }}</td>
+            <td>{{ form.saves }}</td>
+            <td>{{ form.balks }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit">成績を保存</button>
+  </form>
+{% endblock %}

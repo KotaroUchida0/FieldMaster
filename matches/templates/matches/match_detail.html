@@ -7,5 +7,7 @@
 <p>結果: {{ match.get_result_display }}</p>
 <p>内容: {{ match.description }}</p>
 <a href="{% url 'update_match' match.id %}">試合結果を更新</a>
+<a href="{% url 'create_hitter_stats' match.id %}">野手成績入力</a>
+<a href="{% url 'create_pitcher_stats' match.id %}">投手成績入力</a>
 <a href="{% url 'match_list' %}">試合一覧に戻る</a
 {% endblock %}
