@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FieldMaster{% endblock %}</title>
+    <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        table, th, td {
+          border: 1px solid black;
+        }
+        th, td {
+          padding: 8px;
+          text-align: center;
+        }
+      </style>
+      
 </head>
 <body>
     <header>
@@ -15,6 +29,8 @@
                 <li><a href="{% url 'events' %}">イベント一覧</a></li>
                 <li><a href="{% url 'create_event' %}">イベント作成</a></li>
                 <li><a href="{% url 'match_list' %}">試合一覧</a></li>
+                <li><a href="{% url 'title_page' %}">タイトル</a></li>
+                <li><a href="{% url 'total_stats' %}">成績</a></li>
             </ul>
         </nav>
     </header>

@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% block title %}通算成績{% endblock %}
+
+{% block content %}
+<h2>通算成績</h2>
+
+<h3>打者成績</h3>
+<table>
+    <thead>
+        <tr>
+            <th>選手名</th>
+            <th>打席数</th>
+            <th>打数</th>
+            <th>ヒット</th>
+            <th>二塁打</th>
+            <th>三塁打</th>
+            <th>本塁打</th>
+            <th>打点</th>
+            <th>得点</th>
+            <th>三振</th>
+            <th>四球</th>
+            <th>死球</th>
+            <th>犠打</th>
+            <th>犠飛</th>
+            <th>盗塁</th>
+            <th>盗塁死</th>
+            <th>併殺打</th>
+            <th>失策</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hitter in hitter_totals %}
+        <tr>
+            <td>{{ hitter.player__name }}</td>
+            <td>{{ hitter.plate_appearances }}</td>
+            <td>{{ hitter.at_bats }}</td>
+            <td>{{ hitter.hits }}</td>
+            <td>{{ hitter.doubles }}</td>
+            <td>{{ hitter.triples }}</td>
+            <td>{{ hitter.home_runs }}</td>
+            <td>{{ hitter.rbi }}</td>
+            <td>{{ hitter.runs }}</td>
+            <td>{{ hitter.strikeouts }}</td>
+            <td>{{ hitter.walks }}</td>
+            <td>{{ hitter.hbp }}</td>
+            <td>{{ hitter.sac_bunt }}</td>
+            <td>{{ hitter.sac_fly }}</td>
+            <td>{{ hitter.steals }}</td>
+            <td>{{ hitter.caught_stealing }}</td>
+            <td>{{ hitter.gdp }}</td>
+            <td>{{ hitter.errors }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>年度別打者成績</h3>
+<table>
+    <thead>
+        <tr>
+            <th>年度</th>
+            <th>選手名</th>
+            <th>打席数</th>
+            <th>打数</th>
+            <th>ヒット</th>
+            <th>二塁打</th>
+            <th>三塁打</th>
+            <th>本塁打</th>
+            <th>打点</th>
+            <th>得点</th>
+            <th>三振</th>
+            <th>四球</th>
+            <th>死球</th>
+            <th>犠打</th>
+            <th>犠飛</th>
+            <th>盗塁</th>
+            <th>盗塁死</th>
+            <th>併殺打</th>
+            <th>失策</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hitter in hitter_yearly_stats %}
+        <tr>
+            <td>{{ hitter.year }}</td>
+            <td>{{ hitter.player__name }}</td>
+            <td>{{ hitter.plate_appearances }}</td>
+            <td>{{ hitter.at_bats }}</td>
+            <td>{{ hitter.hits }}</td>
+            <td>{{ hitter.doubles }}</td>
+            <td>{{ hitter.triples }}</td>
+            <td>{{ hitter.home_runs }}</td>
+            <td>{{ hitter.rbi }}</td>
+            <td>{{ hitter.runs }}</td>
+            <td>{{ hitter.strikeouts }}</td>
+            <td>{{ hitter.walks }}</td>
+            <td>{{ hitter.hbp }}</td>
+            <td>{{ hitter.sac_bunt }}</td>
+            <td>{{ hitter.sac_fly }}</td>
+            <td>{{ hitter.steals }}</td>
+            <td>{{ hitter.caught_stealing }}</td>
+            <td>{{ hitter.gdp }}</td>
+            <td>{{ hitter.errors }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>投手成績</h3>
+<table>
+    <thead>
+        <tr>
+            <th>選手名</th>
+            <th>投球回</th>
+            <th>打席数</th>
+            <th>打数</th>
+            <th>被安打</th>
+            <th>被二塁打</th>
+            <th>被三塁打</th>
+            <th>被本塁打</th>
+            <th>三振</th>
+            <th>四球</th>
+            <th>死球</th>
+            <th>失点</th>
+            <th>自責点</th>
+            <th>暴投</th>
+            <th>先発</th>
+            <th>完投</th>
+            <th>完封</th>
+            <th>勝利</th>
+            <th>敗戦</th>
+            <th>セーブ</th>
+            <th>ボーク</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pitcher in pitcher_totals %}
+        <tr>
+            <td>{{ pitcher.player__name }}</td>
+            <td>{{ pitcher.innings_pitched }}</td>
+            <td>{{ pitcher.plate_appearances }}</td>
+            <td>{{ pitcher.at_bats }}</td>
+            <td>{{ pitcher.hits_allowed }}</td>
+            <td>{{ pitcher.doubles_allowed }}</td>
+            <td>{{ pitcher.triples_allowed }}</td>
+            <td>{{ pitcher.home_runs_allowed }}</td>
+            <td>{{ pitcher.strikeouts }}</td>
+            <td>{{ pitcher.walks }}</td>
+            <td>{{ pitcher.hbp }}</td>
+            <td>{{ pitcher.runs_allowed }}</td>
+            <td>{{ pitcher.earned_runs }}</td>
+            <td>{{ pitcher.wild_pitches }}</td>
+            <td>{{ pitcher.starter }}</td>
+            <td>{{ pitcher.complete_game }}</td>
+            <td>{{ pitcher.shutout }}</td>
+            <td>{{ pitcher.wins }}</td>
+            <td>{{ pitcher.losses }}</td>
+            <td>{{ pitcher.saves }}</td>
+            <td>{{ pitcher.balks }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>年度別投手成績</h3>
+<table>
+    <thead>
+        <tr>
+            <th>年度</th>
+            <th>選手名</th>
+            <th>投球回</th>
+            <th>打席数</th>
+            <th>打数</th>
+            <th>被安打</th>
+            <th>被二塁打</th>
+            <th>被三塁打</th>
+            <th>被本塁打</th>
+            <th>三振</th>
+            <th>四球</th>
+            <th>死球</th>
+            <th>失点</th>
+            <th>自責点</th>
+            <th>暴投</th>
+            <th>先発</th>
+            <th>完投</th>
+            <th>完封</th>
+            <th>勝利</th>
+            <th>敗戦</th>
+            <th>セーブ</th>
+            <th>ボーク</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pitcher in pitcher_yearly_stats %}
+        <tr>
+            <td>{{ pitcher.year }}</td>
+            <td>{{ pitcher.innings_pitched }}</td>
+            <td>{{ pitcher.plate_appearances }}</td>
+            <td>{{ pitcher.at_bats }}</td>
+            <td>{{ pitcher.hits_allowed }}</td>
+            <td>{{ pitcher.doubles_allowed }}</td>
+            <td>{{ pitcher.triples_allowed }}</td>
+            <td>{{ pitcher.home_runs_allowed }}</td>
+            <td>{{ pitcher.strikeouts }}</td>
+            <td>{{ pitcher.walks }}</td>
+            <td>{{ pitcher.hbp }}</td>
+            <td>{{ pitcher.runs_allowed }}</td>
+            <td>{{ pitcher.earned_runs }}</td>
+            <td>{{ pitcher.wild_pitches }}</td>
+            <td>{{ pitcher.starter }}</td>
+            <td>{{ pitcher.complete_game }}</td>
+            <td>{{ pitcher.shutout }}</td>
+            <td>{{ pitcher.wins }}</td>
+            <td>{{ pitcher.losses }}</td>
+            <td>{{ pitcher.saves }}</td>
+            <td>{{ pitcher.balks }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
