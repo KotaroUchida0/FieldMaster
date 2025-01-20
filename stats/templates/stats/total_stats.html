@@ -32,7 +32,7 @@
     <tbody>
         {% for hitter in hitter_totals %}
         <tr>
-            <td>{{ hitter.player__name }}</td>
+            <td>{{ hitter.player__username }}</td>
             <td>{{ hitter.plate_appearances }}</td>
             <td>{{ hitter.at_bats }}</td>
             <td>{{ hitter.hits }}</td>
@@ -84,7 +84,7 @@
         {% for hitter in hitter_yearly_stats %}
         <tr>
             <td>{{ hitter.year }}</td>
-            <td>{{ hitter.player__name }}</td>
+            <td>{{ hitter.player__username }}</td>
             <td>{{ hitter.plate_appearances }}</td>
             <td>{{ hitter.at_bats }}</td>
             <td>{{ hitter.hits }}</td>
@@ -137,7 +137,7 @@
     <tbody>
         {% for pitcher in pitcher_totals %}
         <tr>
-            <td>{{ pitcher.player__name }}</td>
+            <td>{{ pitcher.player__username }}</td>
             <td>{{ pitcher.innings_pitched }}</td>
             <td>{{ pitcher.plate_appearances }}</td>
             <td>{{ pitcher.at_bats }}</td>
@@ -195,6 +195,7 @@
         {% for pitcher in pitcher_yearly_stats %}
         <tr>
             <td>{{ pitcher.year }}</td>
+            <td>{{ pitcher.player__username }}</td>
             <td>{{ pitcher.innings_pitched }}</td>
             <td>{{ pitcher.plate_appearances }}</td>
             <td>{{ pitcher.at_bats }}</td>

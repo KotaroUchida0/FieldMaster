@@ -14,10 +14,10 @@
         </tr>
     </thead>
     <tbody>
-        {% for hitter in hitter_avg %}
+        {% for leader in hitter_avg %}
         <tr>
-            <td>{{ hitter.player.name }}</td>
-            <td>{{ hitter.avg|floatformat:3 }}</td>
+            <td>{{ leader.player__username }}</td>
+            <td>{{ leader.avg|floatformat:3 }}</td>
         </tr>
         {% endfor %}
     </tbody>
@@ -34,7 +34,7 @@
     <tbody>
         {% for leader in homerun_leaders %}
         <tr>
-            <td>{{ leader.player__name }}</td>
+            <td>{{ leader.player__username }}</td>
             <td>{{ leader.total_home_runs }}</td>
         </tr>
         {% endfor %}
@@ -52,7 +52,7 @@
     <tbody>
         {% for leader in win_leaders %}
         <tr>
-            <td>{{ leader.player__name }}</td>
+            <td>{{ leader.player__username }}</td>
             <td>{{ leader.total_wins }}</td>
         </tr>
         {% endfor %}
@@ -70,7 +70,7 @@
     <tbody>
         {% for leader in strikeout_leaders %}
         <tr>
-            <td>{{ leader.player__name }}</td>
+            <td>{{ leader.player__username }}</td>
             <td>{{ leader.total_strikeouts }}</td>
         </tr>
         {% endfor %}

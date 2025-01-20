@@ -151,7 +151,7 @@ def total_stats(request):
 def title_page(request):
     user_team = request.user.team  
     # 打率上位3選手
-    hitter_avg = HitterStat.objects.filter(player__team=user_team).annotate(
+    hitter_avg = HitterStat.objects.filter(player__team=user_team).values('player__username').annotate(
         avg=Coalesce(F('hits') / F('at_bats'), 0, output_field=FloatField())
     ).order_by('-avg')[:3]
 
